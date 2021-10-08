@@ -7,21 +7,23 @@ import java.util.ArrayList;
 public class lexical {
     public static void main(String[] args) {
         dfa DFA = new dfa();
-        String InputDir = args[0];
-        try {
-            FileInputStream fr = new FileInputStream(InputDir);
-            BufferedReader bufferedReader =
-                    new BufferedReader(new InputStreamReader(fr));
-            String str = null;
-            while ((str = bufferedReader.readLine()) != null) {
-                ArrayList<String> words = getWord(str);
-                int len = words.size();
-                for (String word : words) {
-                    DFA.lex(word);
+        String InputDir;
+        for (String arg : args) {
+            InputDir = arg;
+            try {
+                FileInputStream fr = new FileInputStream(InputDir);
+                BufferedReader bufferedReader =
+                        new BufferedReader(new InputStreamReader(fr));
+                String str = null;
+                while ((str = bufferedReader.readLine()) != null) {
+                    ArrayList<String> words = getWord(str);
+                    for (String word : words) {
+                        DFA.lex(word);
+                    }
                 }
+            } catch (Exception ignored) {
+                System.out.println("Err");
             }
-        } catch (Exception ignored) {
-            System.out.println("Err: File directory not found");
         }
     }
 
