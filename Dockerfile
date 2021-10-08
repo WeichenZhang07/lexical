@@ -8,6 +8,5 @@ COPY ./ /app/
 # 编译程序
 WORKDIR /app/
 RUN javac -encoding UTF-8  ./src/*.java
-RUN javac -d . ./src/*.java
 # 将当前目录设为 /app/output
 WORKDIR /app/output
