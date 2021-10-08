@@ -10,5 +10,4 @@ image = { source = "dockerfile", path = "." }
 run = [
   # 运行程序
   "pwd",
-  "java -classpath ./src lexical $input",
 ]
